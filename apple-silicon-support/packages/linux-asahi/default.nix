@@ -26,15 +26,15 @@ let
         inherit stdenv lib;
 
         pname = "linux-asahi";
-        version = "7.1.12";
+        version = "7.1.13";
         modDirVersion = version;
         extraMeta.branch = "7.1";
 
         src = fetchFromGitHub {
           owner = "AsahiLinux";
           repo = "linux";
-          tag = "asahi-7.1.12-1";
-          hash = "sha256-SN0kEWrIDkGY7bPr9qx8oKWwDUptJHdePMSZ7vc72EQ=";
+          tag = "asahi-7.1.13-3";
+          hash = "sha256-quvdcQ2LbYQyCDQFKc6KPjWv+f5fpWfUrXo5Id0kpwE=";
         };
 
         kernelPatches = [
@@ -59,6 +59,9 @@ let
 
               APPLE_PMGR_MISC = yes;
               APPLE_PMGR_PWRSTATE = yes;
+
+              # Defaults to 'n', but needed to prevent bluetooth stuttering
+              BT_BRCMEXT = yes;
             };
             features.rust = true;
           }

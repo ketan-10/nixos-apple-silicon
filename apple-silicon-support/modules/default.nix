@@ -15,6 +15,7 @@ in
     ./peripheral-firmware
     ./boot-m1n1
     ./sound
+    ./video
   ];
 
   config = lib.mkIf cfg.enable {

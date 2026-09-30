@@ -2,6 +2,20 @@
 
 This file contains important information for each release.
 
+## YYYY-MM-DD (unreleased)
+
+Support for the Apple Video Decoder (AVD) has been added, and is enabled by
+`hardware.asahi.avd.enable` (`true` by default). Currently, the kernel
+driver/firmware only supports the Video 4 Linux 2 (V4L2) Requests api, which
+isn't supported by a lot of media engines (gstreamer has basic support,
+ffmpeg/mpv requires patches).
+
+To combat this, there is a wrapper driver for `v4l2_requests` that exposes a
+VA-API interface, for which support is much more common. This is packaged here
+in `libva-v4l2_requests-sofus13`, and can be enabled with
+`hardware.asahi.avd.vaapi-support`, which is false by default for various
+stability reasons.
+
 ## 2026-07-30
 
 Among other kernel updates, the kernel update to 6.18.x included a remame
